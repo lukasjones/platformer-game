@@ -1,0 +1,12 @@
+body {
+  background: black;
+}
+
+
+input {
+  padding: 10px;
+}
+
+.padded {
+  padding: 10px;
+}
