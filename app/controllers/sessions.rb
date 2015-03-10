@@ -1,7 +1,7 @@
 post '/signin' do
 
   @user = User.where(email: params[:email])[0]
-
+  p @user
   if @user && @user.password == params[:password]
     session[:id] = @user.id
     content_type :json
@@ -26,5 +26,5 @@ post '/signup' do
 end
 
 get '/signout' do
-  session[:id] = nil
+  session.clear
 end

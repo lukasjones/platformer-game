@@ -17,4 +17,24 @@ body {
   border-radius: 10px;
 }
 
-
+.center {
+  text-align: center;
+}
+.fb-button {
+  padding-top: 3px;
+  display: inline-block;
+  padding-bottom: 1px;
+  text-decoration: none;
+  background: white;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 11px;
+  border: 1px solid gray;
+  float: right;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.fb-button:hover {
+  border: 1px solid red;
+}

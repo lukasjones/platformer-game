@@ -36,14 +36,16 @@ $(document).ready(function() {
       $("body").find(".remove").remove();
       $(".hide-it").show();
 
-      // NEEDS TO BE FINISHED. also finish signout controller
-
       console.log("success")
     })
     .fail(function(){
       console.log("fail")
     })
   });
+
+
+
+///////////////////////////////SIGN UP//////////////////////////////////
 
   var form = "<div class='row'><div class='col-lg-4 col-md-4 col-sm-2'></div><div class='signup-container col-lg-4 col-md-4 col-sm-6'><form action='/signup' method='post' class='signup-form'> <div class='form-group'><input type='text' name='name' placeholder='Name' class='form-control'/></div><div class='form-group'> <input type='text' name='email' placeholder='Email'/ class='form-control'> </div> <div class='form-group'> <input type='password' name='password' placeholder='Password' class='form-control'/> </div> <input type='submit' class='form-control' value='Sign Up'/> </form></div>"
 
