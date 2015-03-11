@@ -9,7 +9,6 @@ before do
   @client_id = ENV['FB_CLIENT_ID']
   @client_secret = ENV['FB_CLIENT_SECRET']
   @host = ENV['HOST']
-
   session[:oauth] ||= {}
 end
 
@@ -24,8 +23,8 @@ get "/facebook" do
     response = http.request request
     url = "https://graph.facebook.com/me?fields=id,name,email&access_token=#{session[:oauth][:access_token]}"
     fb_user_info = JSON.parse(open(url).read)
-    puts "="*100+"\n fb_user_info:\n"
-    puts fb_user_info
+    # puts "="*100+"\n fb_user_info:\n"
+    # puts fb_user_info
     # Find or create user in app's DB
     User.find_or_create_by(name: fb_user_info['name'], fb_id: fb_user_info['id'])
     user_login(User.find_by(fb_id: fb_user_info['id']))
