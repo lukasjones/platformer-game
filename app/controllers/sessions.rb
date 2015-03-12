@@ -1,5 +1,4 @@
 post '/signin' do
-
   @user = User.where(email: params[:email])[0]
   p @user
   if @user && @user.password == params[:password]

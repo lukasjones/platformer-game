@@ -8,7 +8,8 @@ require "cgi"
 before do
   @client_id = ENV['FB_CLIENT_ID']
   @client_secret = ENV['FB_CLIENT_SECRET']
-  @host = ENV['HOST']
+  # @host = ENV['HOST']
+  @host = 'https://radiant-escarpment-6191.herokuapp.com/'
   session[:oauth] ||= {}
 end
 
@@ -35,6 +36,8 @@ end
 get "/request" do
   redirect "https://graph.facebook.com/oauth/authorize?client_id=#{@client_id}&redirect_uri=http://#{@host}/fbcallback"
 end
+
+
 
 get "/fbcallback" do
   session[:oauth][:code] = params[:code]
