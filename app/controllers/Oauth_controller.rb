@@ -9,7 +9,7 @@ before do
   @client_id = ENV['FB_CLIENT_ID']
   @client_secret = ENV['FB_CLIENT_SECRET']
   # @host = ENV['HOST']
-  @host = 'https://radiant-escarpment-6191.herokuapp.com/'
+  @host = 'https://lukasplatforms.herokuapp.com/'
   session[:oauth] ||= {}
 end
 
