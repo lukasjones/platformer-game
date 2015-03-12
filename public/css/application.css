@@ -1,3 +1,4 @@
+/*************** GENERAL STYLES *****************/
 body {
   background: black;
 }
@@ -11,15 +12,55 @@ body {
   padding: 10px;
 }
 
+.center {
+  text-align: center;
+}
+
+
+
 .signup-container {
   background-color: #FFF;
   padding: 20px;
   border-radius: 10px;
 }
 
-.center {
-  text-align: center;
+
+/**************** High Scores Styles ***************/
+.modaler {
+  position: absolute;
+  top: 100px;
+  border-radius: 10px;
+  width: 600px;
+  margin: auto;
+  right: 0;
+  left: 0;
+  background: white;
 }
+
+h1 {
+  text-align: center;
+  clear: both;
+}
+
+hr.scores {
+  margin-top: 60px;
+}
+
+.flex {
+  display: flex;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.item {
+  flex-grow: 1;
+}
+
+
+/*******************LAYOUT STYLES *********************/
+
 .fb-button {
   padding-top: 3px;
   display: inline-block;
@@ -37,4 +78,27 @@ body {
 }
 .fb-button:hover {
   border: 1px solid red;
+}
+
+
+
+/********************GAME STYLES *******************/
+
+canvas {
+  /*border: 10px;*/
+  display: block;
+  margin: auto;
+}
+
+button#start {
+  margin-top: 60px;
+  font-size: 50px;
+  text-align: center;
+  padding: 10px;
+}
+.timer {
+  font-size: 50px;
+  color: red;
+  margin: auto;
+  text-align: center;
 }

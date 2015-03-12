@@ -1,0 +1,26 @@
+<div class='modaler'>
+    <h1 class="center">High Scores</h1>
+    <hr class="scores">
+    <div class="flex">
+      <ul class="item">
+        <h3>Rank</h3>
+        <% @scores.each_with_index do |score, index| %>
+          <li><%= index+1 %></li>
+        <% end %>
+      </ul>
+      <ul class="item">
+        <h3>Name</h3>
+        <% @scores.each do |score| %>
+          <li><%= user_name_for_score(score.id) %> </li>
+        <% end %>
+      </ul>
+
+      <ul class="item">
+        <h3>Score</h3>
+        <% @scores.each do |score| %>
+          <li><%= score.points %></li>
+        <% end %>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-default">close</button>
+</div>

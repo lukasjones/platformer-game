@@ -76,4 +76,33 @@ $(document).ready(function() {
   });
 
 
-});
+/////////////////SHOW HIGH SCORES////////////////////
+$("#high-scores").on("click", function(event){
+  event.preventDefault();
+  $.ajax({
+    url: '/scores',
+    type: 'GET'
+  })
+  .done(function(response){
+    // console.log(response);
+    $("body").append(response);
+  })
+  .fail(function(){
+    console.log("high score fail");
+  })
+})
+
+//////////////////GET RID OF HIGH SCORES///////////////
+
+$("body").on("click", function(){
+  $("body").find(".modaler").remove();
+})
+
+$("body").on("click", "button.close", function(){
+  $("body").find(".modaler").remove();
+})
+
+
+
+
+}); // End Document ready
