@@ -37,8 +37,6 @@ get "/request" do
   redirect "https://graph.facebook.com/oauth/authorize?client_id=#{@client_id}&redirect_uri=https://#{@host}/fbcallback"
 end
 
-# https://lukasplatforms.herokuapp.com/
-# https://lukasplatforms.herokuapp.com/
 
 
 get "/fbcallback" do
