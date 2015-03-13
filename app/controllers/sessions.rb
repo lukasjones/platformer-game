@@ -25,5 +25,7 @@ post '/signup' do
 end
 
 get '/signout' do
-  session.clear
+  session.delete :oauth
+  session.delete :id
+
 end
