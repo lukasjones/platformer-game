@@ -57,3 +57,7 @@ get "/fb_logout" do
   redirect "/"
 end
 
+
+after do
+  ActiveRecord::Base.clear_active_connections!
+end
