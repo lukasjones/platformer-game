@@ -51,6 +51,11 @@ var WIDTH=900, HEIGHT=600;
                 new Platform(3600, HEIGHT-250, 50, 39, 8),
                 new Platform(3550, HEIGHT-350, 50, 39, 8),
                 new Platform(2500, HEIGHT-400, 500, 39, 7),
+                new Platform(2500, HEIGHT-300, 100, 39, 7),
+                new Platform(2600, HEIGHT-200, 100, 39, 7),
+                new Platform(2600, HEIGHT-100, 100, 39, 7),
+                new Platform(2500, HEIGHT-100, 100, 39, 7),
+                new Platform(3000, HEIGHT-200, 500, 39, 7),
                 ];
       lava = [new Lava(1000, HEIGHT-30, 20000, 30, 7)];
       for (var i = 1; i <=5; i++){
