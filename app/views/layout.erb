@@ -33,19 +33,28 @@
   <%= erb :_header, layout: false %>
   <%= yield %>
 
-  <% if session[:id] %>
-  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
-  <div class="timer">0</div>
-  <div class="center">
+  <%# if session[:id] %>
+  <div class="fb-share-button logged-in" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+  <div class="timer logged-in">0</div>
+  <div class="center logged-in">
     <button id="start">Play</button>
   </div>
-  <% else %>
-  <div class="jumbo">
+  <%# else %>
+  <div class="jumbo logged-out">
     <h1 class="mega">Welcome to Platform</h1>
   </div>
 
-  <% end %>
+  <%# end %>
 
+  <script type="text/javascript">
+    <% if session[:id] %>
+      $(".logged-out").hide();
+      $(".logged-in").show();
+    <% else %>
+      $(".logged-in").hide();
+      $(".logged-out").show();
+    <% end %>
+  </script>
 
 </body>
 </html>

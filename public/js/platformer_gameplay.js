@@ -5,6 +5,8 @@ var WIDTH=900, HEIGHT=600;
     var canvas, ctx, keystate, keystateJump;
     var player, platforms, lava, intersection = false;
     var currentObjectY, dead=false;
+    var colors = ["#F70000", "#FF5721", "#FAF2EB", "#FFCC11", "#A3D144", "#49E20E", "#2BE3AC", "#00FFFF", "#0099CC", "#6558BB", "#EE00EE"];
+    var playersCurrentColor = "#FFF"
     var leftArrow = 37;
     var upArrow = 38;
     var rightArrow = 39;
@@ -107,6 +109,7 @@ var WIDTH=900, HEIGHT=600;
           // this.downForce = 7;
           this.yVector = -35;
           this.y -= 7;
+          playersCurrentColor = colors[Math.floor(Math.random() * colors.length)]
         } else {
           if (intersection){
             this.y = currentObjectY;
@@ -187,6 +190,7 @@ var WIDTH=900, HEIGHT=600;
       });
       document.addEventListener("keyup", function(evt){
         delete keystate[evt.keyCode];
+
       });
 
       init();
@@ -254,7 +258,7 @@ var WIDTH=900, HEIGHT=600;
     function draw() {
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
       ctx.save();
-      ctx.fillStyle = "#fff";
+      ctx.fillStyle = playersCurrentColor;
       player.draw();
       ctx.fillStyle = "#7CFC00";
       for (var i = 0; i < platforms.length; i++ ) {

@@ -1,5 +1,9 @@
 def current_user
-  User.find(session[:id])
+  if session[:id]
+    User.find(session[:id])
+  else
+    ""
+  end
 end
 
 

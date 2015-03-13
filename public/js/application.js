@@ -12,10 +12,8 @@ $(document).ready(function() {
       data: formData
     })
     .done(function(response){
-      $(".hide-it").hide();
-
-      $(".navbar-right").append("<li class='remove'><a>Hey " + response.name + "</a></li>")
-      $(".navbar-right").append("<li class='remove'><a class='signout' href='/signout'>Sign Out</a></li>")
+      $(".logged-out").hide();
+      $(".logged-in").show();
       $(".layout-login").find("input").val("")
     })
     .fail(function(){
@@ -34,7 +32,8 @@ $(document).ready(function() {
     })
     .done(function(response){
       $("body").find(".remove").remove();
-      $(".hide-it").show();
+      $(".logged-out").show();
+      $(".logged-in").hide();
 
       console.log("success")
     })
@@ -64,9 +63,8 @@ $(document).ready(function() {
     })
     .done(function(response){
       console.log("success")
-      $(".hide-it").hide();  //hides
-      $(".navbar-right").append("<li class='remove'><a>Hey " + response.name + "</a></li>");
-      $(".navbar-right").append("<li class='remove'><a class='signout' href='/signout'>Sign Out</a></li>")
+      $(".logged-out").hide();
+      $(".logged-in").show();
       $(".signup-container").remove();
       console.log("after jquery")
     })
@@ -84,7 +82,6 @@ $("#high-scores").on("click", function(event){
     type: 'GET'
   })
   .done(function(response){
-    // console.log(response);
     $("body").append(response);
   })
   .fail(function(){
