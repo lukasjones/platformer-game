@@ -4,6 +4,7 @@ $(document).ready(function(){
 var WIDTH=900, HEIGHT=600;
     var canvas, ctx, keystate, keystateJump;
     var player, platforms, lava, intersection = false;
+    var platformQueue;
     var currentObjectY, dead=false;
     var colors = ["#F70000", "#FF5721", "#FAF2EB", "#FFCC11", "#A3D144", "#49E20E", "#2BE3AC", "#00FFFF", "#0099CC", "#6558BB", "#EE00EE"];
     var playersCurrentColor = "#FFF"
@@ -42,16 +43,19 @@ var WIDTH=900, HEIGHT=600;
                 new Platform(2000, HEIGHT-100, 500, 39, 9),
                 new Platform(2000, HEIGHT-300, 300, 39, 7),
                 new Platform(2600, HEIGHT-100, 100, 39, 7),
-                new Platform(2900, HEIGHT-300, 400, 39, 7),
-                new Platform(2500, HEIGHT-100, 500, 39, 4),
-                new Platform(3200, HEIGHT-150, 100, 39, 4),
-                new Platform(3400, HEIGHT-200, 500, 39, 4),
-                new Platform(6000, HEIGHT-300, 700, 39, 6),
-                new Platform(7000, HEIGHT-500, 250, 39, 6),
-                new Platform(8000, HEIGHT-300, 480, 39, 5),
-
+                new Platform(2000, HEIGHT-200, 400, 39, 7),
+                new Platform(2000, HEIGHT-300, 250, 39, 7),
+                new Platform(1800, HEIGHT-300, 400, 39, 5),
+                new Platform(4000, HEIGHT-100, 1000, 39, 10),
+                new Platform(4000, HEIGHT-150, 50, 39, 8),
+                new Platform(3600, HEIGHT-250, 50, 39, 8),
+                new Platform(3550, HEIGHT-350, 50, 39, 8),
+                new Platform(2500, HEIGHT-400, 500, 39, 7),
                 ];
       lava = [new Lava(1000, HEIGHT-30, 20000, 30, 7)];
+      for (var i = 1; i <=5; i++){
+        platformQueue = platformQueue.concat(platforms.shift());
+      }
 
     }
 
@@ -123,35 +127,10 @@ var WIDTH=900, HEIGHT=600;
 
         delete keystateJump[upArrow];
         if (keystate[downArrow]) this.y += 7;
-        if (keystate[rightArrow]){
-          this.x += 7;
-          }
-        if (keystate[leftArrow]) {
-          this.x -= 7;
-          }
+        if (keystate[rightArrow]) this.x += 7;
+        if (keystate[leftArrow]) this.x -= 7;
 
-          for(var i = 0; i < platforms.length; i++) {
-            if (platforms[i].x+platforms[i].width < 0) {
-              platforms.shift();
-            }
-          }
-
-
-
-        //ax = paddle x position
-        //ay = paddle y position
-        //aw = paddle width
-        //ah = paddle height
-
-        //bx = object x position
-        //by = object y position
-        //bw = object width
-        //bh = object height
-
-        // player x less than object x + object width
-
-
-
+        ///////////////////DEFINING FLOOR AND CEILING////////////////////
         this.y = Math.max(Math.min(this.y, HEIGHT - this.height), 0);
       },
       draw: function(){
@@ -241,11 +220,23 @@ var WIDTH=900, HEIGHT=600;
       if (checkIntersections(lava)){
         endGame();
       }
-      intersection = checkIntersections(platforms);
+      intersection = checkIntersections(platformQueue);
 
       player.update();
-      for (var i = 0; i < platforms.length; i++) {
-        platforms[i].update();
+
+      for(var i = 0; i < platformQueue.length; i++) {
+        if (platformQueue[i].x+platformQueue[i].width < 0) {
+
+          platformQueue.shift();
+          if (platforms.length > 0){
+            platformQueue = platformQueue.concat(platforms.shift())
+          }
+        }
+      }
+
+
+      for (var i = 0; i < platformQueue.length; i++) {
+        platformQueue[i].update();
       }
 
       for (var i = 0; i < lava.length; i++) {
@@ -261,8 +252,8 @@ var WIDTH=900, HEIGHT=600;
       ctx.fillStyle = playersCurrentColor;
       player.draw();
       ctx.fillStyle = "#7CFC00";
-      for (var i = 0; i < platforms.length; i++ ) {
-        platforms[i].draw();
+      for (var i = 0; i < platformQueue.length; i++ ) {
+        platformQueue[i].draw();
       }
       ctx.fillStyle="#CF1020";
       for (var i = 0; i < lava.length; i++) {
@@ -276,6 +267,7 @@ var WIDTH=900, HEIGHT=600;
       $("#start").hide();
       console.log("YUP")
       platforms=[];
+      platformQueue=[];
       lava=[]
       setUp();
       main();
