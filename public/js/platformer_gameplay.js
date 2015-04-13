@@ -119,7 +119,7 @@ var WIDTH=900, HEIGHT=600;
           if (intersection){
           this.yVector = -35;
           this.y -= 7;
-          }
+        }
           playersCurrentColor = colors[Math.floor(Math.random() * colors.length)]
         } else {
           if (intersection){
